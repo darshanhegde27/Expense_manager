@@ -1,6 +1,21 @@
+import { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
 import React from 'react';
-import './style.css';
 
-export default function Dashbord() {
-  return <div></div>;
+export default class Dash extends React.Component {
+  state = {
+    loading: true,
+    Data: [],
+  };
+   componentDidMount() {
+  
+  }
+  render() {
+    
+    return (
+      <div>
+        {this.state.loading ? <div>loading</div> : console.log(this.state.Data)}
+      </div>
+    );
+  }
 }

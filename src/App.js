@@ -1,6 +1,10 @@
 import React from 'react';
 import './style.css';
-
+import Dash from './Views/Dashbord'
 export default function App() {
-  return <div></div>;
+  return(
+    <div>
+      <Dash/>
+      </div>
+  );
 }
