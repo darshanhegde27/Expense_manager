@@ -1,18 +1,10 @@
-import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { HomeData } from '../../Redux/Reducers/Homepage_data';
 
-export default class Home extends React.Component {
-  state = {
-    loading: true,
-    Data: [],
-  };
-  componentDidMount() {}
-  render() {
-    return (
-      <div>
-        {this.state.loading ? <div>loading</div> : console.log(this.state.Data)}
-      </div>
-    );
-  }
+export default function Home() {
+  const user = useSelector(HomeData);
+  const dispatch = useDispatch();
+
+  return <div>{console.log(user)}</div>;
 }
