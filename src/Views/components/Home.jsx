@@ -1,10 +1,7 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { HomeData } from '../../Redux/Reducers/Homepage_data';
+import React from "react";
+import { useSelector } from "react-redux";
 
-export default function Home() {
-  const user = useSelector(HomeData);
-  const dispatch = useDispatch();
-
-  return <div>{console.log(user)}</div>;
+export default function Home(props) {
+  const value = useSelector((state) => state.Homedata.value);
+  return <div></div>;
 }

@@ -1,12 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { SignIn } from '../../Redux/Services/HomeCalls';
-import { SignUp } from '../../Redux/Services/HomeCalls';
+import { createSlice } from "@reduxjs/toolkit";
+import { SignIn } from "../../Redux/Services/HomeCalls";
+import { SignUp } from "../../Redux/Services/HomeCalls";
 
 export const HomeDataSlice = createSlice({
-  name: 'Homedata',
+  name: "Homedata",
   initialState: {
-    user: 'hi',
-    error: '',
+    user: "hi",
+    error: "",
     value: 0
   },
   reducers: {
@@ -18,11 +18,15 @@ export const HomeDataSlice = createSlice({
     Sighn_In: (emailP, passwordP, state) => {
       state.user = SignIn(emailP, passwordP)[0];
       state.error = SignIn(emailP, passwordP)[1];
-    },
-  },
+    }
+  }
 });
 
 // Action creators are generated for each case reducer function
-export const { Sighn_up, Sign_In } = HomeDataSlice.actions;
-export const HomeData = (state) => state.HomeData.value;
+export const {
+  increment,
+  decrement,
+  incrementByAmount
+} = HomeDataSlice.actions;
+
 export default HomeDataSlice.reducer;
