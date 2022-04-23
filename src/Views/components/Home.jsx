@@ -3,5 +3,5 @@ import { useSelector } from "react-redux";
 
 export default function Home(props) {
   const value = useSelector((state) => state.Homedata.value);
-  return <div></div>;
+  return <div>Home</div>;
 }
