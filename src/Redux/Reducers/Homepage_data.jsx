@@ -7,12 +7,12 @@ export const HomeDataSlice = createSlice({
   initialState: {
     user: "hi",
     error: "",
-    value: 0
   },
   reducers: {
-    Sighn_up: (emailP, passwordP, state) => {
-      state.user = SignUp(emailP, passwordP)[0];
-      state.error = SignUp(emailP, passwordP)[1];
+    Sighn_up: async(state,action) => {
+      let l=await SignUp(action.payload[0],action.payload[1])
+      console.log(l)
+      
     },
 
     Sighn_In: (emailP, passwordP, state) => {
@@ -24,9 +24,7 @@ export const HomeDataSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-  increment,
-  decrement,
-  incrementByAmount
+  Sighn_In,Sighn_up
 } = HomeDataSlice.actions;
 
 export default HomeDataSlice.reducer;
