@@ -5,8 +5,9 @@ export async function SignUp(emailP, passwordP) {
     email: emailP,
     password: passwordP,
   });
-  console.log(Res)
-  return Res.error;
+    return Res;
+ 
+  
   
 }
 //Sighn in

@@ -5,13 +5,24 @@ import { SignUp } from "../../Redux/Services/HomeCalls";
 export const HomeDataSlice = createSlice({
   name: "Homedata",
   initialState: {
-    user: "hi",
+    user: "",
     error: "",
   },
   reducers: {
-    Sighn_up: async(state,action) => {
-      let l=await SignUp(action.payload[0],action.payload[1])
-      console.log(l)
+    Sighn_up:(state,msg) => {
+      
+      if(msg.payload.error!=null)
+      {
+        state.error=msg.payload.error.message;
+        
+      }
+      
+     //console.warn(msg.payload.user.email)
+     if(msg.payload.user!=null)
+     {
+       state.user=msg.payload.user.email;
+       state.error="";
+     }
       
     },
 
