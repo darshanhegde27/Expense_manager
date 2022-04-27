@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Container,Card, Alert } from 'react-bootstrap'
+import { Container,Card, Alert, Spinner } from 'react-bootstrap'
 import CardHeader from 'react-bootstrap/esm/CardHeader'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Sighn_up } from '../../Redux/Reducers/Homepage_data'
+import { setErr, Sighn_up } from '../../Redux/Reducers/Homepage_data'
 import { SignUp } from '../../Redux/Services/HomeCalls'
 import {
    
@@ -25,20 +25,25 @@ const error=useSelector((state)=>state.Homedata.error)
 const s=(ev,i)=>{
    st[i]=ev;
    sv(st)
+   setLoading(false);
+   dispatch(setErr());
 }
 const[loading,setLoading]=React.useState(false)
 const Submit=async()=>{
          setLoading(true)
          var x=await SignUp(va[0],va[1])
          dispatch(Sighn_up(x)) 
-    
+          
     
 }
-
+React.useEffect(()=>
+{
+  {error===''&&user!=''?navi("/login"):setLoading(false)}
+},[user,error])
   return (
       
     <Container>
-    
+    {error===''&&loading==true?<Spinner animation="grow" />:''}
         <Card id="R_card">
         
             <CardHeader>{Register_c.name}</CardHeader>
@@ -51,12 +56,15 @@ const Submit=async()=>{
                          <input type={Register_c.logins[v1][1]} placeholder={Register_c.logins[v1][2]} onChange={(event)=>s(event.target.value,i)} required></input>
                      </div>)
                  })}
-                 <button onClick={()=>Submit()}>{Register_c.submit}</button>
+                 <button onClick={()=>Submit()} disabled={loading}>{Register_c.submit}</button>
                  
                  <Link to="/login">{Register_c.login}</Link>
-           
+            {error}
         </Card>
-        {error==''?navi("/login"):<Alert>{error}</Alert>}
-    </Container>
+        
+        
+                
+                </Container>
+                
   )
 }

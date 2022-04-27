@@ -25,6 +25,10 @@ export const HomeDataSlice = createSlice({
      }
       
     },
+    setErr:(state)=>
+    {
+      state.error='';
+    },
 
     Sighn_In: (emailP, passwordP, state) => {
       state.user = SignIn(emailP, passwordP)[0];
@@ -35,7 +39,7 @@ export const HomeDataSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-  Sighn_In,Sighn_up
+  Sighn_In,Sighn_up,setErr
 } = HomeDataSlice.actions;
 
 export default HomeDataSlice.reducer;
